@@ -1,9 +1,13 @@
 USERS => dictionary => stores the used_ids against username
-USER_TO_GROUP => dictionary => stores grp_id against the user_id of a user
+USER_TO_GROUP "data/user_to_group.npy" => dictionary => stores grp_id against the user_id of a user
+
 {user_id}_user_data => inside data, user_profiles, user_information => stores the username, user_id (not required anymore)
-{user_id}_user_keywords (list) => inside data, user_profiles, user_keywords => stores the keywords of users
+
+{user_id}_user_keywords (list) "data/user_profiles/user_keywords/{user_id}_user_keywords.npy" => inside data, user_profiles, user_keywords => stores the keywords of users
 {user_id}_docid_to_clicks => inside data, user_profiles, docid_to_clicks => stores the clicks against each docid
-{grp_id}_group_data => inside data, group_profile, group_information => stores the group_id, users in this group
-{grp_id}_group_keywords (list) => inside data, group_profile, group_keywords => stores the group keywords
-GRP_IDS (list) => stores all group_ids
+
+{grp_id}_group_data "data/group_profiles/group_information/{grp_id}_group_data.npy" => inside data, group_profile, group_information => stores the group_id, users in this group
+
+{grp_id}_group_keywords (list) "data/group_profiles/group_keywords/{grp_id}_group_keywords.npy" => inside data, group_profile, group_keywords => stores the group keywords
+GRP_IDS (list) "data/GRP_IDS.npy" => stores all group_ids
 

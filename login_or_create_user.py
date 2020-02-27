@@ -59,9 +59,12 @@ def loginUser(username):
         return USERS[username]
     user_to_group()
     user_id = createUser(username)
-    group_id, _ = createGroup([user_id], [])
+    group_id, _ = createGroup([user_id], [], [])
+    print("createGroup: group_id: ", group_id)
     save_user_information(username, user_id, group_id)
     save_user_to_group()
     return user_id
+
+
     
     

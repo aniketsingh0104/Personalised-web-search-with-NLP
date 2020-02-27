@@ -6,7 +6,7 @@ Created on Tue Nov 12 21:29:47 2019
 @author: password
 """
 import os
-from load_results import read_dictionary
+from load_results import read_dictionary, read_list
 from crawl_and_scrap import clean_url
 import numpy as np
 
@@ -27,12 +27,12 @@ def pre_work(user_id):
     if os.path.exists("data/already_visited_urls.npy"):
         URL_TO_DOCIDS = read_dictionary("data/already_visited_urls.npy")
     if os.path.exists(f"data/user_profiles/user_keywords/{user_id}_user_keywords.npy"):
-        USER_KEYWORDS = read_dictionary(f"data/user_profiles/user_keywords/{user_id}_user_keywords.npy")
+        USER_KEYWORDS = read_list(f"data/user_profiles/user_keywords/{user_id}_user_keywords.npy")
 
 def get_doc_keywords(doc_id):
     keywords = []
     if os.path.exists(f"data/doc_pages_keywords/{doc_id}.npy"):
-        keywords = read_dictionary(f"data/doc_pages_keywords/{doc_id}.npy")
+        keywords = read_list(f"data/doc_pages_keywords/{doc_id}.npy")
     return keywords
 
 def extend_user_keywords(doc_keywords):

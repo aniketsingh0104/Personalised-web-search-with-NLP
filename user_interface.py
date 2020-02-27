@@ -9,6 +9,7 @@ from search_query import get_results
 from load_results import read_results_sheet
 from user_profile2 import update_user_profile
 from login_or_create_user import loginUser
+from check_user_group import checkUserBelongsToGroup
 
 FINAL_RES = {}
 
@@ -41,6 +42,8 @@ def take_input(user_id):
         inp = int(input("Enter your url id: "))
         url = FINAL_RES[inp][0]
         update_user_profile(url, user_id)
+        checkUserBelongsToGroup(user_id)
+
 
 def login_user():
     while True:
@@ -48,6 +51,8 @@ def login_user():
         if username!="":
             break
     user_id = loginUser(username)
+    
+    print("login_user: ", user_id)
     take_input(user_id)
     
 if __name__=="__main__":

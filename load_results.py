@@ -12,6 +12,10 @@ def read_dictionary(dict_path):
     dictionary = np.load(dict_path, allow_pickle=True).item()
     return dictionary
 
+def read_list(list_path):
+    lis = np.load(list_path, allow_pickle=True).tolist()
+    return lis
+
 def read_results_sheet(sheet_path):
     results_dataframe = pd.read_excel(sheet_path)
     return results_dataframe
