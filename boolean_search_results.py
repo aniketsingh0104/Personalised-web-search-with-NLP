@@ -8,8 +8,6 @@ Created on Thu Oct  3 16:28:45 2019
 from clean_html import get_stemmed_words, get_stopwords_removed
 from load_results import read_dictionary, read_results_sheet
 
-DOCID_TO_INDEX = {}
-
 def Sort(sub_list):
     #sort the results first by total tf-idf weight and then by references
     #reverse true because we want results in decreasing order
@@ -30,6 +28,7 @@ def sort_results(boolean_results):
 # 
 # =============================================================================
 def search_results(words, keyword_to_url, results_data_frame):
+    DOCID_TO_INDEX = {}
     boolean_results = []
     #words is the list of words in query string
     for word in words:

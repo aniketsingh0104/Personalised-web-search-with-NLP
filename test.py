@@ -7,6 +7,7 @@ Created on Wed Oct  2 18:45:22 2019
 """
 #from load_results import read_dictionary
 import numpy as np
+from load_results import read_dictionary
 
 # =============================================================================
 # df = pd.DataFrame([[1, 2], [4, 5], [7, 8]],columns=['max_speed', 'shield'])
@@ -44,8 +45,10 @@ print("grps ", grps)
 usr_grp = np.load("data/user_to_group.npy", allow_pickle=True)
 print("user_grp: ", usr_grp)
 
-group("fcc86c4c-94b3-4d91-a3aa-32fcd1d7dd26")
+group("70dfcc90-01d0-49d6-9ba0-b2006f217429")
 
-user("d311e1af-8941-496a-91cd-6c3bb133d123")
+user("0ad1a1fe-fd82-400a-a4c0-8dae39e1978e")
+#keyword_to_urls = read_dictionary("data/keyword_to_urls.npy")
+#print(keyword_to_urls)
 
 
