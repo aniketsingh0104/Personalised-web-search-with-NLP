@@ -51,7 +51,9 @@ def deleteGroup(grp_id):
     if os.path.exists(f"data/group_profiles/group_keywords/{grp_id}_group_keywords.npy"):
         os.remove(f"data/group_profiles/group_keywords/{grp_id}_group_keywords.npy")
     #GRP_IDS = read_dictionary("data/GRP_IDS.npy")
-    GRP_IDS.remove(grp_id)
+    if grp_id in GRP_IDS:
+        GRP_IDS.remove(grp_id)
+        np.save("data/GRP_IDS.npy", GRP_IDS)
 
 def mergeTwoGroups(group1_data, group1_keywords, group2_data, group2_keywords):
     common_keywords = getCommonKeywords(group1_keywords, group2_keywords)
@@ -68,17 +70,20 @@ def compareAndMerge(grp_id):
     grp2_id = None
     grp2_keywords = None
     max_match = 0
-    print("compareAndMerge: ", grp_id)
+    #print("compareAndMerge: ", grp_id)
     group1_keywords = read_list(f"data/group_profiles/group_keywords/{grp_id}_group_keywords.npy")
     for g_id in GRP_IDS:
         if g_id != grp_id:
             group2_keywords = read_list(f"data/group_profiles/group_keywords/{g_id}_group_keywords.npy")
             similarity = findSimilarity(group1_keywords, group2_keywords)
             if similarity>=THRESHOLD:
+                print("CompareAndMerge: similarity>=THRESHOLD: ", similarity, "Group1 id: ", grp_id, "Group2 id: ", g_id)
                 if similarity>max_match:
                     max_match = similarity
                     grp2_id = g_id
                     grp2_keywords = group2_keywords
+            else:
+                print("CompareAndMerge: similarity<THRESHOLD: ", similarity, "Group1 id: ", grp_id, "Group2 id: ", g_id)
     if grp2_id is not None:
         group1_data = read_dictionary(f"data/group_profiles/group_information/{grp_id}_group_data.npy")
         group2_data = read_dictionary(f"data/group_profiles/group_information/{grp2_id}_group_data.npy")

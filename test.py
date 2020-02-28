@@ -33,8 +33,8 @@ def group(grp_id):
     grp_data = np.load(f"data/group_profiles/group_information/{grp_id}_group_data.npy", allow_pickle=True)
     print("grp_data: ", grp_data)
     
-#    grp_key = np.load(f"data/group_profiles/group_keywords/{grp_id}_group_keywords.npy", allow_pickle=True)
-#    print("grp keywords: ", grp_key)
+    grp_key = np.load(f"data/group_profiles/group_keywords/{grp_id}_group_keywords.npy", allow_pickle=True)
+    print("grp keywords: ", grp_key)
 
 users = np.load("data/users.npy", allow_pickle=True)
 print("users: ", users)
@@ -45,9 +45,13 @@ print("grps ", grps)
 usr_grp = np.load("data/user_to_group.npy", allow_pickle=True)
 print("user_grp: ", usr_grp)
 
-group("70dfcc90-01d0-49d6-9ba0-b2006f217429")
+group("01841608-4a79-47fd-a751-65259f002b7c")
 
-user("0ad1a1fe-fd82-400a-a4c0-8dae39e1978e")
+#group("1b876629-78dd-45a9-ae9b-e558bc62f23d")
+#
+#user("1f851057-63eb-41f2-9548-9b2be395746e")
+#
+user("263efd91-74f4-4bdd-b34b-2c78e455a501")
 #keyword_to_urls = read_dictionary("data/keyword_to_urls.npy")
 #print(keyword_to_urls)
 

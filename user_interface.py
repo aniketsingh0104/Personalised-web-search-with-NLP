@@ -38,11 +38,16 @@ def take_input(user_id):
         if q=="":
             break
         results = get_results(q, user_id)
-        show_results(results)
-        inp = int(input("Enter your url id: "))
-        url = FINAL_RES[inp][0]
-        update_user_profile(url, user_id)
-        checkUserBelongsToGroup(user_id)
+        #print(len(results))
+        if len(results)!=0:
+            show_results(results)
+            inp = int(input("Enter your url id: "))
+            url = FINAL_RES[inp][0]
+            update_user_profile(url, user_id)
+            checkUserBelongsToGroup(user_id)
+        else:
+            print("Sorry! We can't find anything.")
+        break
 
 
 def login_user():

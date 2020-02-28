@@ -87,6 +87,7 @@ def checkUserBelongsToGroup(user_id):
     grp_keywords = get_grp_keywords(grp_id)
     similarity = findSimilarity(user_keywords, grp_keywords)
     if similarity < THRESHOLD:
+        print("checkUserBelongsToGroup, similarity < THRESHOLD, similarity: ", similarity)
         deleteUserFromGroup(user_id, grp_id)
         new_grp_id, _ = createGroup([user_id], [], user_keywords)
         print("checkUserBelongsToGroup: new_grp_id: ", new_grp_id)
@@ -94,7 +95,7 @@ def checkUserBelongsToGroup(user_id):
         USER_TO_GRP[user_id] = new_grp_id
         save_user_to_grp()
         compareAndMerge(new_grp_id)
-        
-        
+    else:
+        print("checkUserBelongsToGroup, similarity >= THRESHOLD, similarity: ", similarity)    
     
     
