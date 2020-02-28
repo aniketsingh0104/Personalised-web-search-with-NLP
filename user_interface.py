@@ -47,7 +47,6 @@ def take_input(user_id):
             checkUserBelongsToGroup(user_id)
         else:
             print("Sorry! We can't find anything.")
-        break
 
 
 def login_user():
